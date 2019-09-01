@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>View Forms</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/images/icons/cab.jpg"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<!-- <div class="wrap-login100"> -->
+				<div class="container-login100-form-btn">
+					<a href="/logout" style="margin-left: 80%;">
+					<button class="login100-form-btn" >
+						Logout
+					</button>
+					</a>
+				</div>
+                <span class="login100-page-title" >
+                    <u><b>EMPLOYEE LEAVE REQUESTS</b></u>
+				</span>
+				<table class="table table-striped table-dark">
+					<thead>
+					  <tr>
+						<!--<th scope="col">#</th>-->
+						<th scope="col">Hr Name</th>
+						<th scope="col">Emp Name</th>
+						<th scope="col">Emp username</th>
+						<th scope="col">Field id</th>
+                        <th scope="col">Work Interfere</th>
+                        <th scope="col">Remote Work</th>
+                        <th scope="col">Care options</th>
+                        <th scope="col">Wellness Program</th>
+                        <th scope="col">Anonymity</th>
+                        <th scope="col">Leave</th>
+                        <th scope="col">Mental health</th>
+                        <th scope="col">Physical health</th>
+                        <th scope="col">Supervisor</th>
+                        <th scope="col">Mental vs. Physical</th>
+                        <th scope="col">Observation</th>
+                        <th scope="col">Prediction</th>
+						<th scope="col">Treatment</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for row in rows %}           
+						<tr>
+							<td>{{row[0]}}</td>
+							<td>{{row[1]}}</td>
+							<td>{{row[2]}}</td>
+                            <td>{{row[3]}}</td>
+                            <td>{{row[4]}}</td>
+                            <td>{{row[5]}}</td>
+                            <td>{{row[6]}}</td>
+                            <td>{{row[7]}}</td>
+                            <td>{{row[8]}}</td>
+                            <td>{{row[9]}}</td>
+                            <td>{{row[10]}}</td>
+                            <td>{{row[11]}}</td>
+							<td>{{row[12]}}</td>
+							<td>{{row[13]}}</td>
+							<td>{{row[14]}}</td>
+							<td>{{row[15]}}</td>
+							<td>{{row[16]}}</td>
+							<td class='clickable-row' data-href='/predict?field_id={{row[3]}}&w_id={{row[2]}}' style="cursor: pointer;">
+								<button class="ui fluid button small red">Predict</button>
+							</td>
+							<td>{{row[17]}}</td>
+                            
+	
+                            
+						</tr>
+						{% endfor %} 	
+					</tbody>
+				</table>
+
+				<!--<div class="login100-pic js-tilt" data-tilt>
+					<img src="../static/images/ola.jpg" alt="IMG">
+                </div>
+                
+                <div class="login100-pic js-tilt" data-tilt>
+					<img src="../static/images/uber.jpg" alt="IMG">
+				</div>-->
+
+			<!-- </div> -->
+		</div>
+	</div>
+	
+
+
+	
+<!--===============================================================================================-->	
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
+
+</body>
+</html>

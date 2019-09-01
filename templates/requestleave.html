@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Leave Request Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/images/icons/cab.jpg"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="container-login100-form-btn">
+					<a href="/logout" style="margin-left: 80%;">
+					<button class="login100-form-btn" >
+						Logout
+					</button>
+					</a>
+                </div>
+                <br><br><br>
+                <span class="login100-page-title" >
+                    <u><b>Request Leave Form</b></u>
+                </span>
+                <div class="card text-grey bg-success mb-3" style="max-width: 30rem;">
+                        <div class="card-header">Fill in the details:</div>
+                        <div class="card-body">
+                          <!-- <h5 class="card-title"></h5> -->
+                          <form action="/requestleave" method="POST" class="login100-form validate-form">
+                            <div class="wrap-input100">
+                                    <input class="input100" name="work_interface" list="1" placeholder="Work Interfere">
+                                    <datalist id="1">
+                                        <option data-value="0">Sometimes</option>
+                                        <option data-value="1">Never</option>
+                                        <option data-value="2">Often</option>
+                                        <option data-value="3">Don't know</option>
+                                        <option data-value="4">Rarely</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="remote_work" list="2" placeholder="Remote Work">
+                                    <datalist id="2">
+                                        <option data-value="0">Yes</option>
+                                        <option data-value="1">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="care_options" list="3" placeholder="Care Options">
+                                    <datalist id="3">
+                                        <option data-value="0">Not Sure</option>
+                                        <option data-value="1">Yes</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="wellness" list="4" placeholder="Wellness Program">
+                                    <datalist id="4">
+                                        <option data-value="0">Yes</option>
+                                        <option data-value="1">Don't know</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>             
+                            <div class="wrap-input100">
+                                    <input class="input100" name="anonimity" list="5" placeholder="Anonimity">
+                                    <datalist id="5">
+                                        <option data-value="0">Yes</option>
+                                        <option data-value="1">Don't know</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>   
+                            <div class="wrap-input100">
+                                    <input class="input100" name="leave" list="6" placeholder="Leave">
+                                    <datalist id="6">
+                                        <option data-value="0">Somewhat difficult</option>
+                                        <option data-value="1">Very difficult</option>
+                                        <option data-value="2">Don't know</option>
+                                        <option data-value="3">Very easy</option>
+                                        <option data-value="4">Somewhat easy</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>    
+                            <div class="wrap-input100">
+                                    <input class="input100" name="mental_health" list="7" placeholder="Mental Health Consequence">
+                                    <datalist id="7">
+                                        <option data-value="0">Maybe</option>
+                                        <option data-value="1">Yes</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="phy_health" list="8" placeholder="Physical Health Consequence">
+                                    <datalist id="8">
+                                        <option data-value="0">Maybe</option>
+                                        <option data-value="1">Yes</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="supervisor" list="9" placeholder="Supervisor">
+                                    <datalist id="9">
+                                        <option data-value="0">Yes</option>
+                                        <option data-value="1">Some of them</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="ment_vs_phy" list="10" placeholder="Mental vs Physical">
+                                    <datalist id="10">
+                                        <option data-value="0">Yes</option>
+                                        <option data-value="1">Don't know</option>
+                                        <option data-value="2">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100">
+                                    <input class="input100" name="obs" list="11" placeholder="Observation Consequence">
+                                    <datalist id="11">
+                                        <option data-value="0">Yes</option>
+                                        <option data-value="1">No</option>
+                                    </datalist>
+                                    </input>
+                                    <span class="focus-input100"></span>
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <button name="rideform" class="login100-form-btn js-tilt" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+	
+
+
+	
+<!--===============================================================================================-->	
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
+
+</body>
+</html>
