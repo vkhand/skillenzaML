@@ -16,7 +16,7 @@ admin = "vikash"
 passWord = "vikash1234"
 
 def uniqueid():
-    seed = random.randint(1,100000)
+    seed = 1
     while True:
         yield seed
         seed += 1
@@ -143,12 +143,13 @@ def requestleave():
         supervisor = request.form['supervisor']
         ment_vs_phy = request.form['ment_vs_phy']
         obs = request.form['obs']
+        treatment = 'NA'
 
-        cur.execute("insert into features(field_id,work_interface,remote_work,care_options,wellness,anonimity,leave,mental_health,phy_health,supervisor,ment_vs_phy,obs) values(?,?,?,?,?,?,?,?,?,?,?,?)",(field_id,work_interface,remote_work,care_options,wellness,anonimity,leave,mental_health,phy_health,supervisor,ment_vs_phy,obs))
+        cur.execute("insert into features values(?,?,?,?,?,?,?,?,?,?,?,?,?)",('2',work_interface,remote_work,care_options,wellness,anonimity,leave,mental_health,phy_health,supervisor,ment_vs_phy,obs,treatment))
         con.commit()
         
         hr_id = cur.execute("select hr_id from employee e where e.w_id = (?)",(w_id,))
-        cur.execute("insert into fe_em values(?,?,?)",(field_id,w_id,hr_id,))
+        cur.execute("insert into fe_em values(?,?,?)",('2',w_id,hr_id,))
         con.commit()
 
 
