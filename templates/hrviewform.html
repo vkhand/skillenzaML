@@ -57,7 +57,7 @@
                         <th scope="col">Supervisor</th>
                         <th scope="col">Mental vs. Physical</th>
                         <th scope="col">Observation</th>
-                        <th scope="col">Prediction</th>
+                        
 						<th scope="col">Treatment</th>
 						</tr>
 					</thead>
@@ -81,9 +81,9 @@
 							<td>{{row[14]}}</td>
 							<td>{{row[15]}}</td>
 							<td>{{row[16]}}</td>
-							<td class='clickable-row' data-href='/predict?field_id={{row[3]}}&w_id={{row[2]}}' style="cursor: pointer;">
-								<button class="ui fluid button small red">Predict</button>
-							</td>
+							
+							<td><a href='/predict?field_id={{row[3]}}&w_id={{row[2]}}'>Predict</a> </td>
+							
 							<td>{{row[17]}}</td>
                             
 	

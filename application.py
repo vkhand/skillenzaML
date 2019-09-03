@@ -6,6 +6,9 @@ from flask import url_for
 from datetime import datetime,date,timedelta
 from werkzeug.utils import secure_filename
 import random,uuid
+import pickle
+import numpy as np 
+import pandas as pd
 
 app = Flask(__name__)
 app.secret_key = '%jsdj!@'
@@ -16,10 +19,16 @@ admin = "vikash"
 passWord = "vikash1234"
 
 def uniqueid():
-    seed = 1
-    while True:
-        yield seed
-        seed += 1
+    con = sql.connect('database.db')
+    cur = con.cursor()
+    val = 0
+    cur.execute("select field_id from features")
+    rows = cur.fetchall()
+    for row in rows:
+        val = row[0]
+    
+    return(int(val)+1)
+   
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -116,7 +125,7 @@ def viewleave():
         cur = con.cursor()
         w_id = session['username']
 
-        cur.execute("select e.*,f.* from employee e, fe_em fe, features f where e.w_id = fe.w_id and f.field_id = fe.field_id and e.w_id = (?)",(w_id,))
+        cur.execute("select e.name,e.w_id,f.field_id,f.treatment from employee e, fe_em fe, features f where e.w_id = fe.w_id and f.field_id = fe.field_id and e.w_id = (?)",(w_id,))
         rows = cur.fetchall()
         return render_template('viewleave.html',rows = rows)
     return redirect('/userlogin')
@@ -145,11 +154,13 @@ def requestleave():
         obs = request.form['obs']
         treatment = 'NA'
 
-        cur.execute("insert into features values(?,?,?,?,?,?,?,?,?,?,?,?,?)",('2',work_interface,remote_work,care_options,wellness,anonimity,leave,mental_health,phy_health,supervisor,ment_vs_phy,obs,treatment))
+        cur.execute("insert into features values(?,?,?,?,?,?,?,?,?,?,?,?,?)",(field_id,work_interface,remote_work,care_options,wellness,anonimity,leave,mental_health,phy_health,supervisor,ment_vs_phy,obs,treatment))
         con.commit()
         
-        hr_id = cur.execute("select hr_id from employee e where e.w_id = (?)",(w_id,))
-        cur.execute("insert into fe_em values(?,?,?)",('2',w_id,hr_id,))
+        cur.execute("select hr_id from employee e where e.w_id = (?)",(w_id,))
+        hr_id = cur.fetchone()
+        hr_id = str(hr_id[0])
+        cur.execute("insert into fe_em values(?,?,?)",(field_id,w_id,hr_id))
         con.commit()
 
 
@@ -247,16 +258,22 @@ def predict():
 
         con = sql.connect('database.db')
         cur = con.cursor()
-        cur.execute("select f.*,e.age,e.gender,e.family_history,hr.tech_company,hr.benefits,hr.no_employees,hr.seek_help from employee e, fe_em fe, features f, employer hr where e.w_id = fe.w_id and f.field_id = fe.field_id and e.hr_id = hr.hr_id and fe.field_id = (?)",(field_id,))
-        rows = cur.fetchall()
+        cur.execute("select f.*,e.age,e.gender,e.family_history,hr.tech_company,hr.benifits,hr.no_employees,hr.seek_help from employee e, fe_em fe, features f, employer hr where e.w_id = fe.w_id and f.field_id = fe.field_id and fe.hr_id = hr.hr_id and f.field_id = (?)",(field_id,))
+        rows = cur.fetchall()[0]
+        rows = list(rows)
+        print(rows)
         rows.pop(0)
         rows.pop(11)
+        rows = np.array(rows)
+        
+        rows = rows.reshape(1,-1)
+       
 
         model = pickle.load(open('decision.pkl','rb'))
 
-        scaler = pickel.load(open('scaler.sav','rb'))
+        scaler = pickle.load(open('scaler.sav','rb'))
         x = scaler.transform(rows)
-        result = model.predict(x)
+        result = str(model.predict(x))[2:4]
 
         cur.execute("update features set treatment =(?) where field_id =(?)",(result,field_id))
         con.commit()

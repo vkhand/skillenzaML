@@ -10,8 +10,7 @@ def createTable():
     c.execute('create table if not exists fe_em(field_id varchar(10), w_id varchar(10),hr_id varchar(10), constraint pk_feem primary key(field_id,w_id,hr_id), constraint fk1_fe foreign key(field_id) references features(field_id) on delete cascade, constraint fk2_fe foreign key(w_id,hr_id) references employee(w_id,hr_id) on delete cascade)')
 
 createTable()
-c.execute("insert into employee values('vik','mayank','vik','20','1','0')")
-conn.commit()
-c.execute("select * from features")
-rows = c.fetchall()
-print(rows)
+
+# c.execute("select * from employee")
+# print(c.fetchall())
+
